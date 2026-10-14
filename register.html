@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guntur Kaaram - Register</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Internal CSS (Week 3) – layout shared by login and register pages */
+  body { background-color: var(--cream); }
+  .auth { min-height: calc(100vh - 78px); display: grid; grid-template-columns: 1fr 1fr; }
+  .auth-art {
+    background-color: var(--red);
+    background-image: radial-gradient(circle at 20% 15%, rgba(255,215,0,.22), transparent 40%);
+    color: #fff; padding: 60px 56px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;
+  }
+  .auth-art h1 { color: #fff; max-width: 420px; }
+  .auth-art .tagline { font-size: 22px; }
+  .auth-art p { color: #ffe6e6; max-width: 400px; }
+  .auth-art img { width: 300px; border-radius: 50%; border: 8px solid rgba(255,255,255,.15); margin-top: 30px; aspect-ratio: 1; object-fit: cover; }
+  .auth-form { display: flex; align-items: center; justify-content: center; padding: 50px 24px; }
+  .auth-form .card { width: 100%; max-width: 420px; }
+  .auth-form h2 { margin-bottom: 4px; }
+  .auth-form .sub { color: var(--muted); margin: 0 0 22px; font-size: 14px; }
+  .auth-form button[type=submit] { width: 100%; margin-top: 6px; }
+  .switch { text-align: center; font-size: 14px; color: var(--muted); margin: 18px 0 0; }
+  .demo { background: var(--cream); border: 1px dashed #e6c8bb; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--muted); margin-top: 16px; }
+  .success { color: var(--leaf); font-weight: 600; }
+  @media (max-width: 860px) { .auth { grid-template-columns: 1fr; } .auth-art { padding: 40px 24px; } .auth-art img { display: none; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+        <circle cx="22" cy="22" r="21" fill="#ffd700"/>
+        <circle cx="22" cy="22" r="17.5" fill="none" stroke="#b30000" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <path d="M10.5 28.5c5.2 4 15.6 3 19.8-9.4.8-2.3-1.5-3.8-3-2-3.8 4.5-9 7.8-16.6 8.1-1.9.1-2.1 2.2-.2 3.3z" fill="#b30000"/>
+        <path d="M27.2 16.8c.5-2.7 2.1-4.5 4.5-5.3" stroke="#2e7d32" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span><span class="brand-name">Guntur Kaaram</span><span class="tagline">Addictive Spice</span></span>
+    </a>
+    <button class="menu-toggle" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="order/index.html#/reserve">Reserve a Table</a></li>
+      <li><a href="data.html">Menu Data</a></li>
+      <li id="userSlot"><a href="login.html" class="active">Login</a></li>
+      <li><a class="btn-order" href="order/index.html">Order Online<span id="cartCount"></span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="auth">
+  <div class="auth-art">
+    <span class="tagline">Addictive Spice</span>
+    <h1>Join the Guntur Kaaram family.</h1>
+    <p>Create an account to save your details for faster ordering and table bookings.</p>
+    <img src="images/mutton.svg" alt="">
+  </div>
+  <div class="auth-form">
+    <div class="card">
+      <h2>Create an account</h2>
+      <p class="sub">It takes less than a minute.</p>
+      <div id="formMessage"></div>
+      <form id="registerForm" onsubmit="return validateForm()" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" autocomplete="username">
+          <div class="error" id="usernameError"></div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" autocomplete="email">
+          <div class="error" id="emailError"></div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" maxlength="10" autocomplete="tel">
+          <div class="error" id="phoneError"></div>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="new-password">
+          <div class="error" id="passwordError"></div>
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm Password</label>
+          <input type="password" id="confirm" autocomplete="new-password">
+          <div class="error" id="confirmError"></div>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <p class="switch">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </div>
+</main>
+
+
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
